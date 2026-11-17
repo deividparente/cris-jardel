@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#59612d" name="theme-color"/>
+<title>Lista de Presentes | Crislany &amp; Jardel</title>
+<link rel="preconnect" href="https://seqjlossfqvwhglrmxrn.supabase.co"/>
+<style>
+:root{--olive:#59612d;--olive2:#78834b;--gold:#b49a62;--cream:#faf8f1;--ink:#343725;--muted:#777967}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+.hero{min-height:92vh;position:relative;display:grid;place-items:end center;text-align:center;padding:3rem 1.25rem;background:linear-gradient(0deg,rgba(25,30,13,.72),rgba(25,30,13,.10) 70%),url('img/hero.jpg') center 36%/cover no-repeat;color:#fff}
+.hero:before{content:"";position:absolute;inset:14px;border:1px solid rgba(231,218,180,.8);pointer-events:none}
+.hero-content{position:relative;max-width:700px;padding-bottom:5vh}
+.monogram{font-size:clamp(3.5rem,12vw,6rem);font-weight:400;letter-spacing:.08em;color:#f4ead1}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;font-size:.75rem}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:400;margin:.25rem 0}
+.hero p{letter-spacing:.12em;text-transform:uppercase;font-size:.9rem}
+nav{position:sticky;top:0;z-index:5;background:rgba(250,248,241,.95);backdrop-filter:blur(8px);border-bottom:1px solid #ddd5c2;display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;padding:.85rem .5rem}
+nav a{font-size:.75rem;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;color:var(--olive);cursor:pointer}
+section{padding:4rem 1.2rem;max-width:1000px;margin:auto}
+.section-kicker{text-align:center;color:var(--olive2);letter-spacing:.2em;text-transform:uppercase;font-size:.72rem}
+h2{font-size:clamp(2rem,6vw,3rem);font-weight:400;text-align:center;color:var(--olive);margin:.55rem 0 1.2rem}
+.intro{max-width:700px;margin:0 auto;text-align:center;line-height:1.9;font-size:1.08rem}
+.rule{width:70px;height:1px;background:var(--gold);margin:1.5rem auto}
+.date-card{background:var(--olive);color:#fffdf5;text-align:center;padding:2rem 1rem;margin:2rem auto;max-width:600px;border:1px solid var(--gold);outline:1px solid var(--gold);outline-offset:6px}
+.date-card .day{font-size:4rem;line-height:1}
+.date-card p{letter-spacing:.13em;text-transform:uppercase;margin:.5rem 0 0}
+.date-card .local{font-size:.8rem;letter-spacing:.1em;color:#e3d7b7;margin-top:1rem}
+.story-photo{min-height:360px;margin:2.5rem calc(50% - 50vw) 0;background:linear-gradient(0deg,rgba(35,40,18,.48),rgba(35,40,18,.10)),url('img/historia.jpg') center 42%/cover no-repeat;display:grid;place-items:end center;padding:2rem 1.2rem}
+.story-photo span{color:#fff;text-align:center;font-size:clamp(1.3rem,4vw,2rem);font-style:italic;text-shadow:0 2px 10px rgba(0,0,0,.4);max-width:650px}
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2rem}
+.gift-card{background:#fff;border:1px solid #e6dfcf;text-align:center;box-shadow:0 6px 20px rgba(60,60,30,.05);overflow:hidden;padding:0 0 1.15rem;display:flex;flex-direction:column}
+.gift-photo{width:100%;height:150px;object-fit:cover;display:block;margin-bottom:.7rem;background:#eef0e3}
+.gift-name{padding:0 .7rem;min-height:2.8em;font-size:1rem;line-height:1.35;margin:.45rem 0}
+.gift-price{font-size:1.6rem;color:var(--olive);margin:.5rem;font-weight:600}
+button{font-family:inherit;cursor:pointer}
+.choose,.pix-button{border:0;background:var(--olive);color:#fff;padding:.8rem 1rem;letter-spacing:.04em;margin:auto .7rem 0}
+.choose:hover,.pix-button:hover{background:#414923}
+.pix-panel{background:#eef0e3;border:1px solid #d5d9c0;padding:2rem 1.2rem;text-align:center;max-width:650px;margin:2rem auto}
+.pix-key{font-size:clamp(1.2rem,4vw,1.7rem);letter-spacing:.04em;overflow-wrap:anywhere;margin:1rem 0;color:var(--olive)}
+.small{font-size:.85rem;color:var(--muted);line-height:1.6}
+.selected{font-size:1rem;color:var(--olive);min-height:1.5em;margin:.8rem 0}
+footer{color:#fffdf5;text-align:center;padding:3rem 1rem;background:linear-gradient(rgba(39,45,20,.76),rgba(39,45,20,.82)),url('img/agradecimento.jpg') center 42%/cover no-repeat}
+footer .monogram{font-size:3rem}
+footer p{line-height:1.8;max-width:650px;margin:1rem auto}
+.modal{display:none;position:fixed;inset:0;background:rgba(15,18,8,.7);z-index:10;align-items:center;justify-content:center;padding:1rem}
+.modal.open{display:flex}
+.modal-box{background:var(--cream);padding:2rem;max-width:460px;width:100%;text-align:center;border:1px solid var(--gold);max-height:92vh;overflow:auto}
+.modal-box h3{font-size:1.8rem;font-weight:400;color:var(--olive);margin:.3rem 0}
+.close{background:transparent;border:1px solid var(--olive);color:var(--olive);padding:.7rem 1.2rem;margin-top:.7rem}
+.field{display:block;width:100%;padding:.8rem;margin:.5rem 0;border:1px solid #cfd3bb;background:#fff;font-family:inherit;font-size:1rem}
+.rsvp-fab{position:fixed;right:1rem;bottom:1rem;z-index:8;background:var(--gold);color:#fff;border:0;border-radius:40px;padding:.9rem 1.4rem;box-shadow:0 8px 24px rgba(60,60,30,.25);letter-spacing:.04em;font-size:.95rem}
+.rsvp-fab:hover{background:#9c834f}
+.msg{font-size:.9rem;margin:.6rem 0;min-height:1.2em}
+.msg.ok{color:var(--olive)}.msg.err{color:#a3402f}
+@media(max-width:650px){.gift-grid{grid-template-columns:repeat(2,1fr);gap:9px}.gift-photo{height:125px}nav{gap:.75rem}nav a{font-size:.65rem}.story-photo{min-height:300px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-content">
+  <div class="eyebrow">Com a bênção de Deus e de seus pais</div>
+  <div class="monogram">C <span style="font-size:.55em">&amp;</span> J</div>
+  <h1>Crislany &amp; Jardel</h1>
+  <p>Nosso grande dia · 30 de janeiro de 2027</p>
+</div></header>
+
+<nav>
+  <a onclick="scrollToId('historia')">Nossa história</a>
+  <a onclick="scrollToId('presentes')">Presentes</a>
+  <a onclick="scrollToId('pix')">Pix</a>
+  <a onclick="openRsvp()">Confirmar presença</a>
+  <a onclick="scrollToId('agradecimento')">Agradecimento</a>
+</nav>
+
+<section id="historia">
+  <div class="section-kicker">Uma nova história começa</div>
+  <h2>Com carinho, Crislany &amp; Jardel</h2>
+  <div class="intro">“O maior presente é ter você conosco nesse dia tão especial!”
+    <div class="rule"></div>
+    Estamos preparando com muito amor o início de uma nova etapa. Cada detalhe deste momento representa sonhos, planos e a alegria de construir uma vida juntos. Ficaremos felizes em celebrar esse dia ao lado de pessoas tão especiais.
+  </div>
+  <div class="date-card">
+    <div class="eyebrow">Reserve esta data</div>
+    <div class="day">30</div>
+    <p>Janeiro de 2027<br/>Sábado · às 19h30</p>
+    <div class="local">Local a confirmar</div>
+  </div>
+  <div class="story-photo"><span>O amor é feito de momentos que se tornam eternos</span></div>
+</section>
+
+<section id="presentes">
+  <div class="section-kicker">Um carinho em forma de presente</div>
+  <h2>Escolha seu presente</h2>
+  <p class="intro">Preparamos opções simbólicas para quem deseja contribuir com o começo da nossa vida a dois e com os sonhos que estamos construindo. Escolha o valor que desejar. Sua presença é o nosso maior presente!</p>
+  <div class="gift-grid" id="giftGrid"><p class="intro" style="grid-column:1/-1">Carregando presentes…</p></div>
+</section>
+
+<section id="pix">
+  <div class="section-kicker">Sua contribuição</div>
+  <h2>Presenteie com Pix</h2>
+  <p class="intro">Após escolher o valor, você pode fazer sua contribuição pela chave Pix abaixo. Agradecemos de coração por fazer parte deste capítulo da nossa história.</p>
+  <div class="pix-panel">
+    <div class="eyebrow">Chave Pix · <span id="pixTipo">CNPJ</span></div>
+    <div class="pix-key" id="pixkey">—</div>
+    <strong id="pixNome">—</strong>
+    <p class="selected" id="chosen">Nenhum valor selecionado</p>
+    <button class="pix-button" onclick="copyPix()">Copiar chave Pix</button>
+    <p class="small" id="copymsg">Confira o nome do destinatário no aplicativo do seu banco antes de confirmar.</p>
+  </div>
+</section>
+
+<footer id="agradecimento">
+  <div class="monogram">C <span style="font-size:.55em">&amp;</span> J</div>
+  <div class="eyebrow">Com amor e gratidão</div>
+  <h2 style="color:#fffdf5">Muito obrigado!</h2>
+  <p>Ter você conosco neste momento tão importante já é um presente imenso. Obrigado pelo carinho, pela presença e por fazer parte da nossa história. Que Deus abençoe você!</p>
+  <p style="color:#e3d7b7;letter-spacing:.12em">CRISLANY &amp; JARDEL · 30.01.2027</p>
+</footer>
+
+<button class="rsvp-fab" onclick="openRsvp()">♡ Confirmar Presença</button>
+
+<!-- Modal presente -->
+<div class="modal" id="modalGift" role="dialog" aria-modal="true"><div class="modal-box">
+  <div class="eyebrow">Presente escolhido</div>
+  <h3 id="modalgift">Seu presente</h3>
+  <p id="modalprice" style="font-size:2rem;color:var(--olive)"></p>
+  <p>Você pode copiar a chave Pix e realizar a contribuição no aplicativo do seu banco.</p>
+  <button class="pix-button" onclick="copyPix()">Copiar chave Pix</button>
+  <button class="pix-button" onclick="goToPix()" style="margin-top:.65rem;background:var(--gold)">Ir para o Pix</button>
+  <br/><button class="close" onclick="closeModal('modalGift')">Continuar olhando</button>
+</div></div>
+
+<!-- Modal presença -->
+<div class="modal" id="modalRsvp" role="dialog" aria-modal="true"><div class="modal-box">
+  <div class="eyebrow">Presença</div>
+  <h3 id="rsvpTitulo">Confirmar Presença</h3>
+  <p class="small" id="rsvpTexto">Ficaremos muito felizes em ter você conosco neste dia tão especial. Por favor, informe o seu nome completo e de seu/sua acompanhante (se houver).</p>
+  <input class="field" id="nome1" placeholder="Seu nome completo"/>
+  <input class="field" id="nome2" placeholder="Acompanhante (opcional)"/>
+  <input class="field" id="nome3" placeholder="Acompanhante (opcional)"/>
+  <p class="msg" id="rsvpMsg"></p>
+  <button class="pix-button" id="rsvpSend" onclick="sendRsvp()">Confirmar</button>
+  <br/><button class="close" onclick="closeModal('modalRsvp')">Fechar</button>
+</div></div>
+
+<script src="config.js"></script>
+<script>
+var C = window.APP_CONFIG;
+var selectedValue = null;
+
+function money(v){ return 'R$ ' + Number(v).toFixed(2).replace('.', ','); }
+function scrollToId(id){ var e=document.getElementById(id); if(e) e.scrollIntoView({behavior:'smooth'}); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+
+// ---- Pix ----
+function setPix(){
+  document.getElementById('pixkey').textContent = C.PIX_KEY;
+  document.getElementById('pixNome').textContent = C.PIX_NOME;
+  document.getElementById('pixTipo').textContent = C.PIX_TIPO || 'Pix';
+}
+async function copyPix(){
+  try{ await navigator.clipboard.writeText(C.PIX_KEY);
+    document.getElementById('copymsg').textContent='Chave Pix copiada! Confira os dados no seu banco.';
+  }catch(e){ document.getElementById('copymsg').textContent='Copie a chave manualmente: '+C.PIX_KEY; }
+}
+function chooseGift(value,name){
+  selectedValue=value;
+  document.getElementById('chosen').textContent='Presente escolhido: '+money(value);
+  document.getElementById('modalgift').textContent=name;
+  document.getElementById('modalprice').textContent=money(value);
+  openModal('modalGift');
+}
+function goToPix(){ closeModal('modalGift'); scrollToId('pix'); }
+
+// ---- Presentes (do banco, com fallback) ----
+var FALLBACK=[
+ {titulo:'Um café da manhã especial',valor:140,imagem:'img/presente-01.jpg'},
+ {titulo:'Um mimo para nosso lar',valor:160,imagem:'img/presente-02.jpg'},
+ {titulo:'Um jantar a dois',valor:180,imagem:'img/presente-03.jpg'},
+ {titulo:'Um cantinho aconchegante',valor:200,imagem:'img/presente-04.jpg'},
+ {titulo:'Utensílios para a cozinha',valor:220,imagem:'img/presente-05.jpg'},
+ {titulo:'Um passeio na viagem',valor:240,imagem:'img/presente-06.jpg'},
+ {titulo:'Detalhes para nossa casa',valor:260,imagem:'img/presente-07.jpg'},
+ {titulo:'Uma experiência a dois',valor:280,imagem:'img/presente-08.jpg'},
+ {titulo:'Um jantar especial',valor:300,imagem:'img/presente-09.jpg'},
+ {titulo:'Um item para nosso lar',valor:320,imagem:'img/presente-10.jpg'},
+ {titulo:'Um momento de descanso',valor:340,imagem:'img/presente-11.jpg'},
+ {titulo:'Um passeio romântico',valor:360,imagem:'img/presente-12.jpg'},
+ {titulo:'Um detalhe para a decoração',valor:380,imagem:'img/presente-13.jpg'},
+ {titulo:'Uma experiência na lua de mel',valor:400,imagem:'img/presente-14.jpg'},
+ {titulo:'Um dia especial',valor:420,imagem:'img/presente-15.jpg'},
+ {titulo:'Um carinho para nossa casa',valor:440,imagem:'img/presente-16.jpg'},
+ {titulo:'Uma lembrança da viagem',valor:460,imagem:'img/presente-17.jpg'},
+ {titulo:'Um passeio inesquecível',valor:480,imagem:'img/presente-18.jpg'},
+ {titulo:'Uma contribuição para novos sonhos',valor:500,imagem:'img/presente-19.jpg'}
+];
+function renderGifts(list){
+  var grid=document.getElementById('giftGrid');
+  grid.innerHTML='';
+  list.forEach(function(g){
+    var art=document.createElement('article'); art.className='gift-card';
+    var img=g.imagem||'';
+    art.innerHTML=
+      (img?'<img class="gift-photo" loading="lazy" alt="'+g.titulo+'" src="'+img+'"/>':'<div class="gift-photo"></div>')+
+      '<div class="gift-name">'+g.titulo+'</div>'+
+      '<div class="gift-price">'+money(g.valor)+'</div>'+
+      '<button class="choose">Escolher presente</button>';
+    art.querySelector('.choose').addEventListener('click',function(){ chooseGift(Number(g.valor), g.titulo); });
+    grid.appendChild(art);
+  });
+}
+async function loadGifts(){
+  try{
+    var r=await fetch(C.SUPA_URL+'/rest/v1/presentes?select=titulo,valor,imagem,ordem&order=ordem.asc',
+      {headers:{apikey:C.SUPA_ANON,Authorization:'Bearer '+C.SUPA_ANON}});
+    if(r.ok){ var d=await r.json(); if(d&&d.length){ renderGifts(d); return; } }
+  }catch(e){}
+  renderGifts(FALLBACK);
+}
+
+// ---- Texto do popup (do banco) ----
+async function loadConfig(){
+  try{
+    var r=await fetch(C.SUPA_URL+'/rest/v1/config?select=*&id=eq.1',
+      {headers:{apikey:C.SUPA_ANON,Authorization:'Bearer '+C.SUPA_ANON}});
+    if(r.ok){ var d=await r.json(); if(d&&d[0]){
+      document.getElementById('rsvpTitulo').textContent=d[0].popup_titulo||'Confirmar Presença';
+      document.getElementById('rsvpTexto').textContent=d[0].popup_texto||'';
+      document.querySelector('.rsvp-fab').innerHTML='♡ '+(d[0].popup_botao||'Confirmar Presença');
+    }}
+  }catch(e){}
+}
+
+// ---- Confirmar presença ----
+function openRsvp(){ document.getElementById('rsvpMsg').textContent=''; openModal('modalRsvp'); }
+async function sendRsvp(){
+  var msg=document.getElementById('rsvpMsg'); msg.className='msg';
+  var nomes=[document.getElementById('nome1').value,document.getElementById('nome2').value,document.getElementById('nome3').value]
+    .map(function(s){return (s||'').trim();}).filter(Boolean);
+  if(!nomes.length){ msg.textContent='Por favor, informe pelo menos o seu nome.'; msg.classList.add('err'); return; }
+  var btn=document.getElementById('rsvpSend'); btn.disabled=true; var old=btn.textContent; btn.textContent='Enviando…';
+  try{
+    var r=await fetch(C.SUPA_URL+'/rest/v1/confirmacoes',
+      {method:'POST',headers:{apikey:C.SUPA_ANON,Authorization:'Bearer '+C.SUPA_ANON,'Content-Type':'application/json',Prefer:'return=minimal'},
+       body:JSON.stringify({nomes:nomes.join(' • ')})});
+    if(!r.ok) throw new Error('falha');
+    msg.textContent='Presença confirmada! Muito obrigado 💚'; msg.classList.add('ok');
+    document.getElementById('nome1').value='';document.getElementById('nome2').value='';document.getElementById('nome3').value='';
+    setTimeout(function(){ closeModal('modalRsvp'); },1800);
+  }catch(e){ msg.textContent='Não foi possível confirmar agora. Tente novamente.'; msg.classList.add('err'); }
+  btn.disabled=false; btn.textContent=old;
+}
+
+document.querySelectorAll('.modal').forEach(function(m){ m.addEventListener('click',function(e){ if(e.target===m) m.classList.remove('open'); }); });
+
+setPix(); loadGifts(); loadConfig();
+</script>
+</body>
+</html>
